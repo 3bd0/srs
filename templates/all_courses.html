@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        .even {
+          background-color: #dddddd;
+        }
+
+        thead tr{
+          background-color: #1f1fcacb;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Level ID</th>
+                <th>Course Name</th>
+                <th>Max Capacity</th>
+                <th>Rate Per Hour</th>
+            </tr>
+        </thead>
+    {% for c_id, lvl_id, c_nm, cap, rph in data %}
+        <tbody>
+            <tr>
+            {%- if loop.index % 2 == 0 %}
+                <td class="even">{{c_id}}</td>
+                <td class="even">{{lvl_id}}</td>
+                <td class="even">{{c_nm}}</td>
+                <td class="even">{{cap}}</td>
+                <td class="even">{{rph}}</td>
+            {%- else %}
+                <td>{{c_id}}</td>
+                <td>{{lvl_id}}</td>
+                <td>{{c_nm}}</td>
+                <td>{{cap}}</td>
+                <td>{{rph}}</td>
+            {% endif %}
+            </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+</body>
+</html>

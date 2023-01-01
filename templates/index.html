@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="brand">
+                <a href="#">Abood Tech</a>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="text">
+            <h1>Welcome To <br><span class="auto-type"></span></h1>
+            <div class="slide-bar">
+                <div class="bars"></div>
+                <div class="bars"></div>
+                <div class="bars"></div>
+            </div>
+        </div>
+        <div class="box-container">
+            <div class="box">
+                <div class="round-icon">
+                    <i class="fa fa-book"></i>
+                </div>
+                <h1><a href="{{ 'all_courses.html' }}">Courses</a></h1>
+                <p> Display All Courses in The System</p>
+            </div>
+            <div class="box">
+                <div class="round-icon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <h1><a href="{{ 'courses_schedules.html' }}">Schedules</a></h1>
+                <p>Show All Schedules of The Course</p>
+            </div>
+            <div class="box">
+                <div class="round-icon">
+                    <i class="fa fa-users"></i>
+                </div>
+                <h1><a href="{{ 'registered_students.html' }}">Students</a></h1>
+                <p>Show all Registered Students</p>
+            </div>
+            <div class="box" style="visibility: hidden;">
+            </div>
+            <div class="box">
+                <div class="round-icon">
+                    <i class="fa fa-cloud"></i>
+                </div>
+                <h1><button onclick="makeRequest()">Api App</button></h1>
+                <p>Display Details of The Registered Students on The System</p>
+            </div>
+        </div>
+    </section>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        var typed = new Typed (".auto-type", {
+            strings: ["GSG ..","ERP Next..", "Students Registration System"],
+            typeSpeed: 80,
+            backSpeed: 40,
+            loop: true
+        });
+    </script>
+    <script>
+      function makeRequest() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == XMLHttpRequest.DONE) {
+            alert(xhr.responseText);
+          }
+        }
+        xhr.open('GET', '/api/v1/student_details', true);
+        xhr.setRequestHeader('Authorization', 'abcdefg1234567hij89jklmn');
+        xhr.send("Authorization=abcdefg1234567hij89jklmn");
+      }
+    </script>
+</body>
+</html>

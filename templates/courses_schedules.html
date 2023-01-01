@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        .even {
+          background-color: #dddddd;
+        }
+
+        thead tr{
+          background-color: #1f1fcacb;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Course ID</th>
+                <th>Day</th>
+                <th>Duration</th>
+                <th>Start Time</th>
+            </tr>
+        </thead>
+    {% for cs_id, c_id, dy, du, st in data %}
+        <tbody>
+            <tr>
+<!--         if condition for styling purpose only-->
+            {%- if loop.index % 2 == 0 %}
+                <td class="even">{{cs_id}}</td>
+                <td class="even">{{c_id}}</td>
+                <td class="even">{{dy}}</td>
+                <td class="even">{{du}}</td>
+                <td class="even">{{st}}</td>
+            {%- else %}
+                <td>{{cs_id}}</td>
+                <td>{{c_id}}</td>
+                <td>{{dy}}</td>
+                <td>{{du}}</td>
+                <td>{{st}}</td>
+            {% endif %}
+            </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+</body>
+</html>

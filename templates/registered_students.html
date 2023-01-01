@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        .even {
+          background-color: #dddddd;
+        }
+
+        thead tr{
+          background-color: #1f1fcacb;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Full Name</th>
+                <th>Mobile Number</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Level</th>
+                <th>BOD</th>
+            </tr>
+        </thead>
+    {% for sid, fn, mn, em, ad, lvl, bod in data %}
+        <tbody>
+            <tr>
+<!--         if condition for styling purpose only-->
+            {%- if loop.index % 2 == 0 %}
+                <td class="even">{{sid}}</td>
+                <td class="even">{{fn}}</td>
+                <td class="even">{{mn}}</td>
+                <td class="even">{{em}}</td>
+                <td class="even">{{ad}}</td>
+                <td class="even">{{lvl}}</td>
+                <td class="even">{{bod}}</td>
+            {%- else %}
+                <td>{{sid}}</td>
+                <td>{{fn}}</td>
+                <td>{{mn}}</td>
+                <td>{{em}}</td>
+                <td>{{ad}}</td>
+                <td>{{lvl}}</td>
+                <td>{{bod}}</td>
+            {% endif %}
+            </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+</body>
+</html>
